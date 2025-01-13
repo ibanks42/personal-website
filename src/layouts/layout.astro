@@ -1,3 +1,17 @@
+---
+import "@/styles/globals.css";
+const year = new Date().getFullYear();
+---
+
+<script>
+	const getThemePreference = () => {
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	};
+	const isDark = getThemePreference() === 'dark';
+	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+</script>
+
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,9 +22,18 @@
     <meta name="description" content="Personal website for Isaiah Banks, aspiring software developer/engineer" />
 		<title>Isaiah Banks</title>
 	</head>
-	<body>
-		<slot />
-	</body>
+  <body>
+    <main class='flex flex-col h-full'>
+      <slot />
+      
+      <footer class='sticky top-full bg-card border-t border-foreground/10 mt-24 pt-4 pb-2'>
+        <div class='flex flex-col mx-auto items-center justify-center text-center'>
+          <h1 class='text-md text-foreground/80 font-semibold tracking-tight transition-colors'>Isaiah Banks</h1>
+          <p class='text-xs text-foreground/60 font-thin tracking-tight transition-colors'>{year}</p>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
 
 <style>

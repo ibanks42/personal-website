@@ -1,59 +1,34 @@
 ---
-import "@/styles/globals.css";
-import Layout from "@/layouts/layout.astro";
 import { Image } from "astro:assets";
 import RedPanda from "@/assets/red-panda.png";
-import { FileUser, Github } from "lucide-astro";
 import { buttonVariants } from "@/components/ui/button";
+import Layout from "@/layouts/layout.astro";
+import { FileUser, Github, Presentation } from "lucide-astro";
 
 const year = new Date().getFullYear();
 ---
 
-<script is:inline>
-	const getThemePreference = () => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			return localStorage.getItem('theme');
-		}
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	};
-	const isDark = getThemePreference() === 'dark';
-	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
- 
-	if (typeof localStorage !== 'undefined') {
-		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains('dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		});
-		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-	}
-</script>
-
-
 <Layout>
-  <div class='flex flex-col h-full'>
-    <div class='flex h-full w-full mx-auto justify-center items-center'>
-      <div class='flex flex-col gap-4 items-center'>
-        <Image src={RedPanda} alt='A red panda' loading='eager' class="size-48 rounded-b-full" />
+  <div class='flex h-full w-full mx-auto justify-center items-center'>
+    <div class='flex flex-col gap-4 items-center'>
+      <Image src={RedPanda} alt='A red panda' loading='eager' class="size-48 rounded-b-full" />
 
-        <div class="flex justify-between gap-4">
-          <a href='https://github.com/ibanks42' target='_blank' class={buttonVariants({ variant: 'outline' })}>
-            <Github />
-            Github
-          </a>
+      <div class="flex justify-between gap-4">
+        <a href='https://github.com/ibanks42' target='_blank' class={buttonVariants({ variant: 'outline' })}>
+          <Github />
+          Github
+        </a>
 
-          <a href='https://docs.google.com/document/d/1789ct2_nWSpoktThmK1pzzb-dAXPhjrXekIVT6c2tv8' target='_blank' class={buttonVariants({ variant: 'outline'})} onmouseover="() => console.log('test')">
-            <FileUser />
-            Resume
-          </a>
-        </div>
+        <a href='https://docs.google.com/document/d/1789ct2_nWSpoktThmK1pzzb-dAXPhjrXekIVT6c2tv8' target='_blank' class={buttonVariants({ variant: 'outline'})}>
+          <FileUser />
+          Resume
+        </a>
+
+        <a href='/projects' class={buttonVariants({ variant: 'outline'})}>
+          <Presentation />
+          Projects
+        </a>
       </div>
     </div>
-
-    <footer class='bg-card border-t border-foreground/10 mt-4 pt-4 pb-2'>
-      <div class='flex flex-col mx-auto items-center justify-center text-center'>
-        <h1 class='text-md text-foreground/80 font-semibold tracking-tight transition-colors'>Isaiah Banks</h1>
-        <p class='text-xs text-foreground/60 font-thin tracking-tight transition-colors'>{year}</p>
-      </div>
-    </footer>
   </div>
 </Layout>
