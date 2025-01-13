@@ -46,11 +46,15 @@ export function ProjectCards() {
 								with, <Anchor href="https://tauri.app">Tauri</Anchor>. While
 								this was somewhat appealing, unfortunately this didn't quite fit
 								my use case as the ability to cross-compile to ARM for my RPI
-								was <Anchor href="">not supported</Anchor>. There was a
-								workaround with Github Actions, or compiling directly on my RPI,
-								but I didn't want to deal with the hassle of copying the files
-								to my RPI every time, or committing every change to Git, or even
-								waiting on the limited power of the RPI to compile.
+								was{" "}
+								<Anchor href="https://v2.tauri.app/distribute/appimage/#appimages-for-arm-based-devices">
+									not supported
+								</Anchor>
+								. There was a workaround with Github Actions, or compiling
+								directly on my RPI, but I didn't want to deal with the hassle of
+								copying the files to my RPI every time, or committing every
+								change to Git, or even waiting on the limited power of the RPI
+								to compile.
 							</p>
 							<p>
 								The next option was{" "}
@@ -89,7 +93,7 @@ export function ProjectCards() {
 	];
 
 	return (
-		<>
+		<div className="flex flex-col gap-4">
 			{cards.map((c) => (
 				<Card key={c.name}>
 					<CardHeader>
@@ -103,6 +107,6 @@ export function ProjectCards() {
 					</CardContent>
 				</Card>
 			))}
-		</>
+		</div>
 	);
 }

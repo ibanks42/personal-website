@@ -4,31 +4,27 @@ import RedPanda from "@/assets/red-panda.png";
 import { buttonVariants } from "@/components/ui/button";
 import Layout from "@/layouts/layout.astro";
 import { FileUser, Github, Presentation } from "lucide-astro";
-
-const year = new Date().getFullYear();
 ---
 
 <Layout>
-  <div class='flex h-full w-full mx-auto justify-center items-center'>
-    <div class='flex flex-col gap-4 items-center'>
-      <Image src={RedPanda} alt='A red panda' loading='eager' class="size-48 rounded-b-full" />
+  <div class='flex flex-col flex-1 justify-center items-center gap-4'>
+    <Image src={RedPanda} alt='A red panda' loading='eager' class="size-48 rounded-b-full" />
 
-      <div class="flex justify-between gap-4">
-        <a href='https://github.com/ibanks42' target='_blank' class={buttonVariants({ variant: 'outline' })}>
-          <Github />
-          Github
-        </a>
+    <div class="flex justify-between gap-4">
+      <a href='https://github.com/ibanks42' target='_blank' class={buttonVariants({ variant: 'outline' })}>
+        <Github />
+        Github
+      </a>
 
-        <a href='https://docs.google.com/document/d/1789ct2_nWSpoktThmK1pzzb-dAXPhjrXekIVT6c2tv8' target='_blank' class={buttonVariants({ variant: 'outline'})}>
-          <FileUser />
-          Resume
-        </a>
+      <a href='https://docs.google.com/document/d/1789ct2_nWSpoktThmK1pzzb-dAXPhjrXekIVT6c2tv8' target='_blank' class={buttonVariants({ variant: 'outline'})}>
+        <FileUser />
+        Resume
+      </a>
 
-        <a href='/projects' class={buttonVariants({ variant: 'outline'})}>
-          <Presentation />
-          Projects
-        </a>
-      </div>
+      <a href='/projects' class={buttonVariants({ variant: 'outline'})}>
+        <Presentation />
+        Projects
+      </a>
     </div>
   </div>
 </Layout>
