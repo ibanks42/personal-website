@@ -8,16 +8,17 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import Layout from "@/layouts/layout.astro";
+import { Image } from "astro:assets";
 
 const projects = await getCollection("projects");
 ---
 
 <Layout>
-  <div class='flex-1 max-w-3xl mx-auto justify-center items-center space-y-4 pt-4 pb-12'>
+  <div class='flex flex-1 flex-col w-full max-w-3xl mx-auto items-center space-y-4 pt-4 pb-12'>
     <header>
       <h1 class='font-bold text-2xl text-center'>Projects</h1>
     </header>
-    <div class="flex flex-1 flex-col mx-4 gap-4">
+    <div class="flex flex-col mx-4 gap-4 w-full">
       {projects.map((p: CollectionEntry<'projects'>) => (
         <a href={`/projects/${p.slug}`} class='w-full hover:opacity-80'>
           <Card className='w-full'>
@@ -31,7 +32,7 @@ const projects = await getCollection("projects");
             </CardHeader>
             <CardContent className='flex flex-col gap-2'>
               {p.data.excerpt ?? <p>p.data.subtitle</p>}
-              {p.data.image && <img src={p.data.image} alt={p.data.title} class='w-full h-full object-cover' />}
+              {p.data.image && <Image src={p.data.image} alt={p.data.title} class='w-full h-full object-cover' height={p.data.imageHeight!} width={p.data.imageWidth!} />}
             </CardContent>
           </Card>
         </a>
