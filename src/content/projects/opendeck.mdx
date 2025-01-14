@@ -1,0 +1,58 @@
+---
+title: "OpenDeck"
+subtitle: "A Stream Deck alternative that allows the use of JS/TS scripting via Bun."
+date: 2025-01-13
+excerpt: ""
+github: "https://github.com/ibanks42/opendeck"
+image: "/projects/opendeck-client.jpg"
+tags: [go,gui,streamdeck,fyne]
+---
+
+import { Image } from "astro:assets";
+import ClientImage from "@/assets/opendeck-client.jpg";
+
+![OpenDeck Client](@/assets/opendeck-client.jpg)
+
+## Introduction
+
+Starting off with this project, I knew I wanted a language and tech stack that
+could cross-compile to most systems, especially Raspberry Pi, as this is where
+the client would be running. I investigated numerous ways to do this, including:
+
+- C# with [Maui](https://dotnet.microsoft.com/en-us/apps/maui)
+- Rust + [Tauri](https://tauri.app) or Go + [Wails](https://wails.io)
+- Flutter
+- Go with [Fyne](https://fyne.io)
+
+I have a soft spot in my heart for C#, and while MAUI leaves a lot to be
+desired, I was willing to tough it out. But ultimately, even though the name is
+*Multi-platform App UI*, it doesn't even support Linux, let alone Raspberry Pi.
+
+The next option was Rust and something I have some experience with: [Tauri](https://tauri.app).
+While this was somewhat appealing, unfortunately, this didn't quite fit my use case,
+as the ability to cross-compile to ARM for my Raspberry Pi was
+[not supported](https://v2.tauri.app/distribute/appimage/#appimages-for-arm-based-devices).
+There was a workaround with GitHub Actions or compiling directly on my Raspberry
+Pi, but I didn't want to deal with the hassle of copying the files to my
+Raspberry Pi every time, committing every change to Git, or waiting on the
+limited power of the Raspberry Pi to compile.
+
+The next option was [Wails](https://wails.io). Once again, this had a similar
+issue. I could cross-compile with GitHub Actions, but this would be too
+time-consuming, and it also doesn't support mobile. The ability to run the
+client on a mobile phone is appealing, even if I wasn't sure that's where the
+project would go.
+
+Flutter seemed like a good option, but I didn't really want to learn Flutter
+at the time. I wanted to continue with a language like Go or Rust. And I could
+be wrong, but from the digging I did into its viability, it seemed like the
+cross-compilation route would once again involve GitHub Actions.
+
+Ultimately, I settled on Go with [Fyne](https://fyne.io). Now, building UIs
+with it does seem a little counterintuitive to what I am used to (HTML and some
+WinForms with C# back in my high school days), but the existence of
+[fyne-cross](https://github.com/fyne-io/fyne-cross) was a **huge** selling point.
+
+---
+
+To be continued...

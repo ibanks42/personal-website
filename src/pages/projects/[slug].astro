@@ -1,0 +1,65 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import A from "@/components/mdx/a.astro";
+import Blockquote from "@/components/mdx/blockquote.astro";
+import Code from "@/components/mdx/code.astro";
+import H1 from "@/components/mdx/h1.astro";
+import H2 from "@/components/mdx/h2.astro";
+import H3 from "@/components/mdx/h3.astro";
+import H4 from "@/components/mdx/h4.astro";
+import HR from "@/components/mdx/hr.astro";
+import Image from "@/components/mdx/image.astro";
+import LI from "@/components/mdx/li.astro";
+import OL from "@/components/mdx/ol.astro";
+import P from "@/components/mdx/p.astro";
+import Pre from "@/components/mdx/pre.astro";
+import UL from "@/components/mdx/ul.astro";
+import { Separator } from "@/components/ui/separator";
+import Layout from "@/layouts/layout.astro";
+
+interface Props {
+	post: CollectionEntry<"projects">;
+}
+
+export async function getStaticPaths() {
+	const blogPosts = await getCollection("projects");
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+ 
+<Layout>
+  <div class='flex-1 max-w-3xl justify-center items-center space-y-4 my-12 px-4 mx-auto '>
+    <div class='flex flex-col gap-2'>
+      <h1 class='text-3xl font-bold'>{post.data.title}</h1>
+      <p class='text-md italic'>{post.data.subtitle}</p>
+      <a class="font-medium underline underline-offset-4">{post.data.github}</a>
+      <Separator />
+    </div>
+    <div class='flex flex-col flex-1 px-4'>
+      <Content 
+        components={{
+          a: A,
+          blockquote: Blockquote,
+          code: Code,
+          img: Image,
+          h1: H1,
+          h2: H2,
+          h3: H3,
+          h4: H4,
+          hr: HR,
+          li: LI,
+          ol: OL,
+          p: P,
+          pre: Pre,
+          ul: UL,
+        }}
+      />
+    </div>
+  </div>
+</Layout>

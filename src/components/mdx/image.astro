@@ -1,0 +1,10 @@
+---
+import {
+	Image as AstroImage,
+	type LocalImageProps,
+	type RemoteImageProps,
+} from "astro:assets";
+const props = Astro.props as LocalImageProps | RemoteImageProps;
+---
+
+<AstroImage {...props} />
