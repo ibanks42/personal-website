@@ -1,10 +1,10 @@
 import {
 	Breadcrumb,
-	BreadcrumbList,
 	BreadcrumbItem,
 	BreadcrumbLink,
-	BreadcrumbSeparator,
+	BreadcrumbList,
 	BreadcrumbPage,
+	BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 
 const AppBreadcrumb = ({ url, title }: { url: URL; title?: string }) => {

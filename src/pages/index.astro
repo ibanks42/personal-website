@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import RedPanda from "@/assets/red-panda.png";
+import { SocialLinks } from "@/components/social-links";
 import { buttonVariants } from "@/components/ui/button";
 import Layout from "@/layouts/layout.astro";
-import { FileUser, Github, Presentation } from "lucide-astro";
+import { Presentation } from "lucide-astro";
 ---
 
 <Layout>
@@ -11,15 +12,7 @@ import { FileUser, Github, Presentation } from "lucide-astro";
     <Image src={RedPanda} alt='A red panda' loading='eager' class="size-48 rounded-b-full" />
 
     <div class="flex justify-between gap-4">
-      <a href='https://github.com/ibanks42' target='_blank' class={buttonVariants({ variant: 'outline' })}>
-        <Github />
-        Github
-      </a>
-
-      <a href='https://docs.google.com/document/d/1789ct2_nWSpoktThmK1pzzb-dAXPhjrXekIVT6c2tv8' target='_blank' class={buttonVariants({ variant: 'outline'})}>
-        <FileUser />
-        Resume
-      </a>
+      <SocialLinks client:load />
 
       <a href='/projects' class={buttonVariants({ variant: 'outline'})}>
         <Presentation />
