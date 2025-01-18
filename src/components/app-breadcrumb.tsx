@@ -13,10 +13,10 @@ const AppBreadcrumb = ({ url, title }: { url: URL; title?: string }) => {
 	}
 
 	const { pathname } = url;
-	const splitUrl = pathname.split("/");
+	const splitUrl = pathname.split("/").filter((p) => p !== "");
 
 	function getUrlOfItem(item: string) {
-		return `${splitUrl.slice(0, splitUrl.indexOf(item) + 1).join("/")}`;
+		return `/${splitUrl.slice(0, splitUrl.indexOf(item) + 1).join("/")}`;
 	}
 
 	function getItemCapitalized(item: string) {
@@ -34,6 +34,7 @@ const AppBreadcrumb = ({ url, title }: { url: URL; title?: string }) => {
 			<BreadcrumbList>
 				<BreadcrumbItem>
 					<BreadcrumbLink href="/">Home</BreadcrumbLink>
+					<BreadcrumbSeparator />
 				</BreadcrumbItem>
 				{splitUrl.map((item, index) => (
 					<div className="flex flex-row items-center gap-1" key={item}>
@@ -43,11 +44,9 @@ const AppBreadcrumb = ({ url, title }: { url: URL; title?: string }) => {
 									{title ?? getItemCapitalized(item)}
 								</BreadcrumbPage>
 							) : (
-								<>
-									<BreadcrumbLink href={getUrlOfItem(item)}>
-										{getItemCapitalized(item)}
-									</BreadcrumbLink>
-								</>
+								<BreadcrumbLink href={getUrlOfItem(item)}>
+									{getItemCapitalized(item)}
+								</BreadcrumbLink>
 							)}
 						</BreadcrumbItem>
 						{index !== splitUrl.length - 1 && <BreadcrumbSeparator />}
