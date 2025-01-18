@@ -33,13 +33,13 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
  
-<Layout>
+<Layout title={post.data.title}>
   <div class='flex-1 max-w-3xl justify-center items-center space-y-4 my-12 px-4 mx-auto '>
     <div class='flex flex-col gap-2'>
       <h1 class='text-3xl font-bold'>{post.data.title}</h1>
       <p class='text-md italic'>{post.data.subtitle}</p>
-      <a class="font-medium underline underline-offset-4">{post.data.github}</a>
-      <Separator />
+      <a class="text-sm italic font-medium underline underline-offset-4">{post.data.github}</a>
+      <Separator className='mt-2' />
     </div>
     <div class='flex flex-col flex-1 px-4'>
       <Content 

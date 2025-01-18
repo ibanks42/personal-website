@@ -1,6 +1,8 @@
 ---
 import "@/styles/globals.css";
+import AppBreadcrumb from "@/components/app-breadcrumb.tsx";
 const year = new Date().getFullYear();
+const { title } = Astro.props;
 ---
 
 <script>
@@ -20,12 +22,15 @@ const year = new Date().getFullYear();
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
     <meta name="description" content="Personal website for Isaiah Banks, aspiring software developer/engineer" />
-		<title>Isaiah Banks</title>
+    <title>{title ?? "Isaiah Banks"}</title>
 	</head>
   <body>
     <div class="flex flex-col min-h-screen">
       <div class="flex flex-col flex-1">
-      <slot />
+        <div class='flex items-center justify-center pt-4'>
+          <AppBreadcrumb url={Astro.url} title={title} />
+        </div>
+        <slot />
       </div>
       <footer class='sticky bottom-0 w-full bg-card border-t border-foreground/10 pt-4 pb-2'>
         <div class='items-center text-center'>

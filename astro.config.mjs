@@ -8,6 +8,11 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 // https://astro.build/config
 export default defineConfig({
+	vite: {
+		ssr: {
+			noExternal: ["lucide-react"],
+		},
+	},
 	integrations: [
 		react(),
 		tailwind({ applyBaseStyles: false }),
@@ -29,4 +34,3 @@ export default defineConfig({
 		}),
 	],
 });
-
