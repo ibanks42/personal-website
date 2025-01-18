@@ -16,7 +16,7 @@ const AppBreadcrumb = ({ url, title }: { url: URL; title?: string }) => {
 	const splitUrl = pathname.split("/");
 
 	function getUrlOfItem(item: string) {
-		return `https://${url.host}${splitUrl.slice(0, splitUrl.indexOf(item) + 1).join("/")}`;
+		return `${splitUrl.slice(0, splitUrl.indexOf(item) + 1).join("/")}`;
 	}
 
 	function getItemCapitalized(item: string) {

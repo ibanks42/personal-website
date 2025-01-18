@@ -13,6 +13,9 @@ export default defineConfig({
 			noExternal: ["lucide-react"],
 		},
 	},
+	build: {
+		server: "ibanks.dev",
+	},
 	integrations: [
 		react(),
 		tailwind({ applyBaseStyles: false }),
