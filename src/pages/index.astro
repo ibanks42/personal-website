@@ -4,7 +4,7 @@ import RedPanda from "@/assets/red-panda.png";
 import { SocialLinks } from "@/components/social-links";
 import { buttonVariants } from "@/components/ui/button";
 import Layout from "@/layouts/layout.astro";
-import { Presentation } from "lucide-astro";
+import { Presentation, Mail } from "lucide-astro";
 ---
 
 <Layout>
@@ -17,6 +17,11 @@ import { Presentation } from "lucide-astro";
       <a href='/projects' class={buttonVariants({ variant: 'outline'})}>
         <Presentation />
         Projects
+      </a>
+
+      <a href='mailto:ibanks@ibanks.dev' class={buttonVariants({ variant: 'outline'})}>
+        <Mail />
+        Contact
       </a>
     </div>
   </div>
