@@ -7,7 +7,7 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"format": "bun format.js"
+		"format": "biome check --write"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^4.3.13",

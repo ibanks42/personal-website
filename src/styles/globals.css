@@ -1,7 +1,7 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@plugin 'tailwindcss-animate';
-@plugin '@tailwindcss/typography';
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -109,87 +109,89 @@
 }
 
 @layer base {
-	:root {
-		--background: 0 0% 99%;
-		--foreground: 0 0% 7%;
-		--muted: 0 0% 96.5%;
-		--muted-foreground: 0 0% 38%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 0 0% 7%;
-		--card: 0 0% 100%;
-		--card-foreground: 0 0% 7%;
-		--border: 0 0% 90.5%;
-		--input: 0 0% 90.5%;
-		--primary: 0 0% 7%;
-		--primary-foreground: 0 0% 98%;
-		--secondary: 0 0% 96.5%;
-		--secondary-foreground: 0 0% 12%;
-		--accent: 0 0% 96.5%;
-		--accent-foreground: 0 0% 12%;
-		--destructive: 0 84% 60%;
-		--destructive-foreground: 0 0% 98%;
-		--ring: 0 0% 7%;
-		--chart-1: 50 55% 71%;
-		--chart-2: 20 55% 71%;
-		--chart-3: 80 55% 71%;
-		--chart-4: 20 55% 74%;
-		--chart-5: 50 58% 71%;
-		--radius: 0.5rem;
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 0 0% 7%;
+    --muted: 0 0% 96.5%;
+    --muted-foreground: 0 0% 38%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --border: 0 0% 90.5%;
+    --input: 0 0% 90.5%;
+    --primary: 0 0% 7%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.5%;
+    --secondary-foreground: 0 0% 12%;
+    --accent: 0 0% 96.5%;
+    --accent-foreground: 0 0% 12%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 0 0% 7%;
+    --chart-1: 50 55% 71%;
+    --chart-2: 20 55% 71%;
+    --chart-3: 80 55% 71%;
+    --chart-4: 20 55% 74%;
+    --chart-5: 50 58% 71%;
+    --radius: 0.5rem;
 
-		--font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system,
-			"Segoe UI", sans-serif;
-		--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
-			Consolas, "Liberation Mono", "Courier New", monospace;
-	}
+    --font-sans:
+      "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      sans-serif;
+    --font-mono:
+      "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+  }
 
-	.dark {
-		--background: 0 0% 6.5%;
-		--foreground: 0 0% 96.5%;
-		--muted: 0 0% 12.5%;
-		--muted-foreground: 0 0% 70%;
-		--popover: 0 0% 8.5%;
-		--popover-foreground: 0 0% 96.5%;
-		--card: 0 0% 8.5%;
-		--card-foreground: 0 0% 96.5%;
-		--border: 0 0% 16%;
-		--input: 0 0% 16%;
-		--primary: 0 0% 96.5%;
-		--primary-foreground: 0 0% 10%;
-		--secondary: 0 0% 12.5%;
-		--secondary-foreground: 0 0% 96.5%;
-		--accent: 0 0% 12.5%;
-		--accent-foreground: 0 0% 96.5%;
-		--destructive: 0 70% 52%;
-		--destructive-foreground: 0 0% 98%;
-		--ring: 0 0% 96.5%;
-		--chart-1: 50 55% 71%;
-		--chart-2: 20 55% 71%;
-		--chart-3: 80 55% 71%;
-		--chart-4: 20 55% 74%;
-		--chart-5: 50 58% 71%;
-	}
+  .dark {
+    --background: 0 0% 6.5%;
+    --foreground: 0 0% 96.5%;
+    --muted: 0 0% 12.5%;
+    --muted-foreground: 0 0% 70%;
+    --popover: 0 0% 8.5%;
+    --popover-foreground: 0 0% 96.5%;
+    --card: 0 0% 8.5%;
+    --card-foreground: 0 0% 96.5%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --primary: 0 0% 96.5%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 12.5%;
+    --secondary-foreground: 0 0% 96.5%;
+    --accent: 0 0% 12.5%;
+    --accent-foreground: 0 0% 96.5%;
+    --destructive: 0 70% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 0 0% 96.5%;
+    --chart-1: 50 55% 71%;
+    --chart-2: 20 55% 71%;
+    --chart-3: 80 55% 71%;
+    --chart-4: 20 55% 74%;
+    --chart-5: 50 58% 71%;
+  }
 }
 
 @layer base {
-	* {
-		@apply border-border;
-	}
-	body {
-		@apply bg-background text-foreground;
-		font-family: var(--font-sans);
-		text-rendering: optimizeLegibility;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @layer base {
-	code,
-	pre {
-		font-family: var(--font-mono);
-	}
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
 
-	::selection {
-		background: hsl(var(--foreground) / 0.12);
-	}
+  ::selection {
+    background: hsl(var(--foreground) / 0.12);
+  }
 }
