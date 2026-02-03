@@ -14,14 +14,18 @@ const projects = await getCollection("projects");
 ---
 
 <Layout title="Projects">
-  <div class='flex flex-1 flex-col w-full max-w-3xl mx-auto items-center space-y-4 pt-4 pb-12'>
-    <header>
-      <h1 class='font-bold text-2xl text-center'>Projects</h1>
+  <div class="container-page pb-14 pt-10">
+    <header class="space-y-2">
+      <h1 class="text-3xl font-semibold tracking-tight">Projects</h1>
+      <p class="max-w-2xl text-sm leading-relaxed text-foreground/70">
+        A small selection of things I’ve built.
+      </p>
     </header>
-    <div class="flex flex-col mx-4 gap-4 w-full">
+
+    <div class="mt-8 flex flex-col gap-4">
       {projects.map((p: CollectionEntry<'projects'>) => (
-        <a href={`/projects/${p.slug}`} class='w-full hover:opacity-80'>
-          <Card className='w-full'>
+        <a href={`/projects/${p.slug}`} class="w-full transition-opacity hover:opacity-90">
+          <Card className="w-full border-foreground/10 bg-card/70 shadow-xs">
             <CardHeader>
               <CardTitle>
                 {p.data.title}
@@ -30,9 +34,19 @@ const projects = await getCollection("projects");
                 {p.data.subtitle}
               </CardDescription>
             </CardHeader>
-            <CardContent className='flex flex-col gap-2'>
-              {p.data.excerpt ?? <p>p.data.subtitle</p>}
-              {p.data.image && <Image src={p.data.image} alt={p.data.title} class='w-full h-full object-cover' height={p.data.imageHeight!} width={p.data.imageWidth!} />}
+            <CardContent className="flex flex-col gap-3 text-sm text-foreground/70">
+              <p>{p.data.excerpt}</p>
+              {p.data.image && (
+                <div class="overflow-hidden rounded-lg border border-foreground/10">
+                  <Image
+                    src={p.data.image}
+                    alt={p.data.title}
+                    class="aspect-video w-full object-cover"
+                    height={p.data.imageHeight!}
+                    width={p.data.imageWidth!}
+                  />
+                </div>
+              )}
             </CardContent>
           </Card>
         </a>

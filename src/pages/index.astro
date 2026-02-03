@@ -1,28 +1,72 @@
 ---
-import { Image } from "astro:assets";
-import RedPanda from "@/assets/red-panda.png";
 import { SocialLinks } from "@/components/social-links";
 import { buttonVariants } from "@/components/ui/button";
 import Layout from "@/layouts/layout.astro";
-import { Presentation, Mail } from "lucide-astro";
+import { Mail, Presentation } from "lucide-astro";
 ---
 
 <Layout>
-  <div class='flex flex-col flex-1 justify-center items-center gap-4'>
-    <Image src={RedPanda} alt='A red panda' loading='eager' class="size-48 rounded-b-full" />
+  <div class="container-page pb-14 pt-10 sm:pt-14">
+    <div class="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+      <section class="space-y-6">
+        <div class="space-y-3">
+          <p class="text-sm font-medium text-foreground/60">Software engineer</p>
+          <h1 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+            I build software.
+          </h1>
+          <p class="text-balance max-w-xl text-base leading-relaxed text-foreground/70 sm:text-lg">
+            I’m Isaiah. I work across web and non-web projects, and I care about making things feel good to use.
+          </p>
+        </div>
 
-    <div class="flex justify-between gap-4">
-      <SocialLinks client:load />
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="/projects" class={buttonVariants({ variant: "default" })}>
+            <Presentation />
+            Projects
+          </a>
+          <a href="mailto:ibanksdev@gmail.com" class={buttonVariants({ variant: "outline" })}>
+            <Mail />
+            Contact
+          </a>
+          <SocialLinks client:load />
+        </div>
 
-      <a href='/projects' class={buttonVariants({ variant: 'outline'})}>
-        <Presentation />
-        Projects
-      </a>
+        <div class="grid gap-3 rounded-xl border border-foreground/10 bg-card/60 p-4 backdrop-blur-sm">
+          <p class="text-sm text-foreground/70">
+            Currently: building portfolio pieces and looking for a role where I can ship.
+          </p>
+        </div>
+      </section>
 
-      <a href='mailto:ibanks@ibanks.dev' class={buttonVariants({ variant: 'outline'})}>
-        <Mail />
-        Contact
-      </a>
+      <aside class="flex items-center justify-center lg:justify-end">
+        <div class="w-full max-w-sm">
+          <div class="relative overflow-hidden rounded-2xl border border-foreground/10 bg-card/70 p-5 shadow-xs">
+            <div class="absolute -left-20 -top-24 size-64 rounded-full bg-foreground/6 blur-3xl" />
+            <div class="relative space-y-4">
+              <div class="flex items-center justify-between">
+                <p class="text-xs text-foreground/60">open to work</p>
+              </div>
+              <div class="space-y-2 text-sm text-foreground/70">
+                <p>
+                  I’m focused on learning by building.
+                </p>
+                <p>
+                  If you’re hiring or want to collaborate, email me.
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <a
+                  href="mailto:ibanksdev@gmail.com"
+                  class={buttonVariants({ variant: "default", size: "sm" })}
+                >
+                  <Mail />
+                  Email
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
 </Layout>
